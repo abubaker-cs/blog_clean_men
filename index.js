@@ -7,6 +7,12 @@ const path = require('path');
 // Initialize a new instance of Express
 const app = new express();
 
+// EJS: Template Engine
+const ejs = require('ejs');
+
+// We are telling Express to use EJS as our template engine
+app.set('view engine', 'ejs');
+
 // Public Folder for sharing all static files
 app.use(express.static('public'));
 
@@ -19,17 +25,21 @@ app.listen(4000, () => {
 // Routing: Where we map requests to specific handlers depending on their URL.
 // 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public/index.html'));
+    // res.sendFile(path.resolve(__dirname, 'public/index.html'));
+    res.render('index');
 });
 
 app.get('/about', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public/about.html'));
+    // res.sendFile(path.resolve(__dirname, 'public/about.html'));
+    res.render('about');
 });
 
 app.get('/post', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public/post.html'));
+    // res.sendFile(path.resolve(__dirname, 'public/post.html'));
+    res.render('post');
 });
 
 app.get('/contact', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public/contact.html'));
+    // res.sendFile(path.resolve(__dirname, 'public/contact.html'));
+    res.render('contact');
 });
